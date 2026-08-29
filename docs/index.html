@@ -4,13 +4,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Country IP Lists</title>
 <style>
-body{font:16px system-ui;max-width:720px;margin:4rem auto;padding:0 1rem;color:#17212b}form{display:flex;gap:.6rem;flex-wrap:wrap}input,select,button{font:inherit;padding:.65rem}input{width:13rem}pre{background:#f4f6f8;padding:1rem;overflow:auto;max-height:55vh}a{color:#065fd4}.muted{color:#667}
+body{font:16px system-ui;max-width:720px;margin:4rem auto;padding:0 1rem;color:#17212b}form{display:flex;gap:.6rem;flex-wrap:wrap}select,button{font:inherit;padding:.65rem}#country{min-width:18rem}pre{background:#f4f6f8;padding:1rem;overflow:auto;max-height:55vh}a{color:#065fd4}.muted{color:#667}
 </style>
 <h1>Country IP Lists</h1>
-<p>Enter a two-letter ISO 3166-1 country code.</p>
+<p>Select a country and IP version.</p>
 <form id="form">
-  <input id="country" name="country" maxlength="2" pattern="[A-Za-z]{2}" placeholder="IR, DE, US…" required>
-  <select id="version" name="version"><option value="4">IPv4</option><option value="6">IPv6</option></select>
+  <label><span class="muted">Country</span><br><select id="country" name="country" required><option>Loading countries…</option></select></label>
+  <label><span class="muted">Version</span><br><select id="version" name="version"><option value="4">IPv4</option><option value="6">IPv6</option></select></label>
   <button>Load</button>
 </form>
 <p id="status" class="muted"></p>
@@ -19,7 +19,7 @@ body{font:16px system-ui;max-width:720px;margin:4rem auto;padding:0 1rem;color:#
 <script>
 const form=document.querySelector('#form'),country=document.querySelector('#country'),version=document.querySelector('#version'),status=document.querySelector('#status'),result=document.querySelector('#result'),download=document.querySelector('#download');
 async function load(){
- const code=country.value.trim().toLowerCase(),v=version.value;
+ const code=country.value.toLowerCase(),v=version.value;
  if(!/^[a-z]{2}$/.test(code))return;
  const url=`data/ipv${v}/${code}.txt`;
  history.replaceState(null,'',`?country=${code.toUpperCase()}&version=${v}`);
@@ -30,7 +30,18 @@ async function load(){
  result.textContent=text; result.hidden=false; download.href=url; download.download=`${code}_ipv${v}.txt`; download.hidden=false;
 }
 form.addEventListener('submit',event=>{event.preventDefault();load()});
-const params=new URLSearchParams(location.search); country.value=(params.get('country')||'IR').slice(0,2); version.value=params.get('version')==='6'?'6':'4'; load();
+async function init(){
+ const params=new URLSearchParams(location.search),selected=(params.get('country')||'IR').slice(0,2).toUpperCase();
+ version.value=params.get('version')==='6'?'6':'4';
+ const manifest=await fetch('data/manifest.json').then(response=>response.json());
+ const names=new Intl.DisplayNames(['en'],{type:'region'});
+ country.replaceChildren();
+ Object.keys(manifest.countries).sort((a,b)=>names.of(a).localeCompare(names.of(b))).forEach(code=>{
+  const option=document.createElement('option'); option.value=code; option.textContent=`${code} — ${names.of(code)}`; country.append(option);
+ });
+ country.value=manifest.countries[selected]?selected:'IR';
+ load();
+}
+init().catch(()=>{status.textContent='Could not load the country list. Please refresh the page.'});
 </script>
 </html>
-
