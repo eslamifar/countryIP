@@ -19,11 +19,9 @@ us_ipv4.txt
 de_ipv6.txt
 ```
 
-After GitHub Pages is enabled, the browser endpoint accepts query parameters:
+The browser endpoint accepts query parameters:
 
-```text
-https://eslamifar.github.io/countryIP/?country=IR&version=4
-```
+[Open Country IP Lists for Iran (IPv4)](https://eslamifar.github.io/countryIP/?country=IR&version=4)
 
 For scripts, use the raw text file instead of parsing the web page:
 
