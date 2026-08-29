@@ -1,22 +1,22 @@
-import ipaddress
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
+from scripts.generate import country_codes, fetch_country
 
-from scripts.generate import parse_records
+class GeneratorTest(unittest.TestCase):
+    def test_country_codes_come_from_manifest(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "manifest.json"
+            path.write_text(json.dumps({"countries": {"US": {}, "IR": {}}}))
+            self.assertEqual(country_codes(path), ["IR", "US"])
 
-
-class ParseRecordsTest(unittest.TestCase):
-    def test_ipv4_range_is_converted_to_minimal_cidrs(self):
-        rows = ["ripencc|IR|ipv4|5.22.0.0|1024|20200101|allocated"]
-        parsed = parse_records(rows)
-        self.assertEqual(parsed["IR"][4], {ipaddress.ip_network("5.22.0.0/22")})
-
-    def test_ignores_summary_and_available_rows(self):
-        rows = [
-            "2|ripencc|20260829|0|0|0|0",
-            "arin|US|ipv4|192.0.2.0|256|20200101|available",
-        ]
-        self.assertEqual(dict(parse_records(rows)), {})
-
+    @patch("scripts.generate.urllib.request.urlopen")
+    def test_fetch_country_reads_ripestat_resources(self, urlopen):
+        payload = {"status": "ok", "data": {"resources": {"ipv4": ["5.22.0.0/17"], "ipv6": ["2001:db8::/32"]}}}
+        with patch("scripts.generate.json.load", return_value=payload):
+            self.assertEqual(fetch_country("IR"), ("IR", ["5.22.0.0/17"], ["2001:db8::/32"]))
 
 if __name__ == "__main__":
     unittest.main()

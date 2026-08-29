@@ -1,6 +1,6 @@
 # Country IP Lists
 
-Daily IPv4 and IPv6 CIDR lists for every country, built directly from the official delegated statistics of AFRINIC, APNIC, ARIN, LACNIC, and RIPE NCC.
+IPv4 and IPv6 CIDR lists for every country, refreshed every six hours from RIPEstat's `country-resource-list` API.
 
 ## Usage
 
@@ -10,13 +10,13 @@ The Iran compatibility file remains available at:
 iran_ipv4.txt
 ```
 
-Every country also has a separate file using its lowercase two-letter ISO code:
+Every country also has raw files in the repository root, using its lowercase two-letter ISO code:
 
 ```text
-docs/data/ipv4/ir.txt
-docs/data/ipv4/de.txt
-docs/data/ipv4/us.txt
-docs/data/ipv6/ir.txt
+ir_ipv4.txt
+de_ipv4.txt
+us_ipv4.txt
+de_ipv6.txt
 ```
 
 After GitHub Pages is enabled, the browser endpoint accepts query parameters:
@@ -42,8 +42,8 @@ python -m unittest discover -v
 python scripts/generate.py
 ```
 
-The GitHub Actions workflow regenerates and commits the lists every day. Data reflects RIR allocations/assignments and is not geolocation; actual routing or user location may differ.
+The GitHub Actions workflow regenerates and commits the lists every six hours. Data reflects registered country resources and is not geolocation; actual routing or user location may differ.
 
 ## License
 
-Code is released under the MIT License. The generated records originate from the five Regional Internet Registries listed in the manifest.
+Code is released under the MIT License. Generated records are retrieved from RIPEstat; the source endpoint is recorded in the manifest.

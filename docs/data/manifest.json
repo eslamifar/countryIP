@@ -1,12 +1,6 @@
 {
-  "generated_at": "2026-08-29T11:20:35.133055+00:00",
-  "sources": {
-    "afrinic": "https://ftp.afrinic.net/pub/stats/afrinic/delegated-afrinic-extended-latest",
-    "apnic": "https://ftp.apnic.net/stats/apnic/delegated-apnic-extended-latest",
-    "arin": "https://ftp.arin.net/pub/stats/arin/delegated-arin-extended-latest",
-    "lacnic": "https://ftp.lacnic.net/pub/stats/lacnic/delegated-lacnic-extended-latest",
-    "ripencc": "https://ftp.ripe.net/pub/stats/ripencc/delegated-ripencc-extended-latest"
-  },
+  "generated_at": "2026-08-29T11:24:52.291449+00:00",
+  "source": "https://stat.ripe.net/data/country-resource-list/data.json",
   "countries": {
     "AD": {
       "ipv4_prefixes": 28,
@@ -57,8 +51,8 @@
       "ipv6_prefixes": 598
     },
     "AU": {
-      "ipv4_prefixes": 9953,
-      "ipv6_prefixes": 1733
+      "ipv4_prefixes": 9952,
+      "ipv6_prefixes": 1732
     },
     "AW": {
       "ipv4_prefixes": 13,
@@ -189,8 +183,8 @@
       "ipv6_prefixes": 25
     },
     "CN": {
-      "ipv4_prefixes": 8810,
-      "ipv6_prefixes": 2060
+      "ipv4_prefixes": 8809,
+      "ipv6_prefixes": 2059
     },
     "CO": {
       "ipv4_prefixes": 648,
@@ -369,7 +363,7 @@
       "ipv6_prefixes": 9
     },
     "HK": {
-      "ipv4_prefixes": 3430,
+      "ipv4_prefixes": 3431,
       "ipv6_prefixes": 940
     },
     "HN": {
@@ -389,8 +383,8 @@
       "ipv6_prefixes": 171
     },
     "ID": {
-      "ipv4_prefixes": 6195,
-      "ipv6_prefixes": 2732
+      "ipv4_prefixes": 6191,
+      "ipv6_prefixes": 2728
     },
     "IE": {
       "ipv4_prefixes": 759,
@@ -405,8 +399,8 @@
       "ipv6_prefixes": 17
     },
     "IN": {
-      "ipv4_prefixes": 9278,
-      "ipv6_prefixes": 2887
+      "ipv4_prefixes": 9276,
+      "ipv6_prefixes": 2888
     },
     "IO": {
       "ipv4_prefixes": 2,
@@ -441,7 +435,7 @@
       "ipv6_prefixes": 40
     },
     "JP": {
-      "ipv4_prefixes": 4796,
+      "ipv4_prefixes": 4789,
       "ipv6_prefixes": 785
     },
     "KE": {
@@ -625,7 +619,7 @@
       "ipv6_prefixes": 19
     },
     "NA": {
-      "ipv4_prefixes": 44,
+      "ipv4_prefixes": 43,
       "ipv6_prefixes": 11
     },
     "NC": {
@@ -697,8 +691,8 @@
       "ipv6_prefixes": 384
     },
     "PK": {
-      "ipv4_prefixes": 798,
-      "ipv6_prefixes": 348
+      "ipv4_prefixes": 797,
+      "ipv6_prefixes": 347
     },
     "PL": {
       "ipv4_prefixes": 4324,
@@ -773,7 +767,7 @@
       "ipv6_prefixes": 856
     },
     "SG": {
-      "ipv4_prefixes": 1890,
+      "ipv4_prefixes": 1889,
       "ipv6_prefixes": 516
     },
     "SI": {
