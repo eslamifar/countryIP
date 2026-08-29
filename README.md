@@ -22,13 +22,13 @@ de_ipv6.txt
 After GitHub Pages is enabled, the browser endpoint accepts query parameters:
 
 ```text
-https://OWNER.github.io/REPOSITORY/?country=IR&version=4
+https://eslamifar.github.io/countryIP/?country=IR&version=4
 ```
 
 For scripts, use the raw text file instead of parsing the web page:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/OWNER/REPOSITORY/main/docs/data/ipv4/de.txt
+curl -fsSL https://raw.githubusercontent.com/eslamifar/countryIP/main/de_ipv4.txt
 ```
 
 Country codes and prefix counts are listed in `docs/data/manifest.json`.
