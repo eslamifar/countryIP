@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Country IP Lists</title>
+<style>
+body{font:16px system-ui;max-width:720px;margin:4rem auto;padding:0 1rem;color:#17212b}form{display:flex;gap:.6rem;flex-wrap:wrap}input,select,button{font:inherit;padding:.65rem}input{width:13rem}pre{background:#f4f6f8;padding:1rem;overflow:auto;max-height:55vh}a{color:#065fd4}.muted{color:#667}
+</style>
+<h1>Country IP Lists</h1>
+<p>Enter a two-letter ISO 3166-1 country code.</p>
+<form id="form">
+  <input id="country" name="country" maxlength="2" pattern="[A-Za-z]{2}" placeholder="IR, DE, US…" required>
+  <select id="version" name="version"><option value="4">IPv4</option><option value="6">IPv6</option></select>
+  <button>Load</button>
+</form>
+<p id="status" class="muted"></p>
+<p><a id="download" hidden download>Download TXT</a></p>
+<pre id="result" hidden></pre>
+<script>
+const form=document.querySelector('#form'),country=document.querySelector('#country'),version=document.querySelector('#version'),status=document.querySelector('#status'),result=document.querySelector('#result'),download=document.querySelector('#download');
+async function load(){
+ const code=country.value.trim().toLowerCase(),v=version.value;
+ if(!/^[a-z]{2}$/.test(code))return;
+ const url=`data/ipv${v}/${code}.txt`;
+ history.replaceState(null,'',`?country=${code.toUpperCase()}&version=${v}`);
+ status.textContent='Loading…'; result.hidden=true; download.hidden=true;
+ const response=await fetch(url);
+ if(!response.ok){status.textContent='No list found for that country code.';return;}
+ const text=await response.text(); status.textContent=`${text.trim().split(/\n/).filter(Boolean).length.toLocaleString()} prefixes`;
+ result.textContent=text; result.hidden=false; download.href=url; download.download=`${code}_ipv${v}.txt`; download.hidden=false;
+}
+form.addEventListener('submit',event=>{event.preventDefault();load()});
+const params=new URLSearchParams(location.search); country.value=(params.get('country')||'IR').slice(0,2); version.value=params.get('version')==='6'?'6':'4'; load();
+</script>
+</html>
+
