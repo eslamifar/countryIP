@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T04:34:50.774525+00:00",
+  "generated_at": "2026-09-06T10:52:04.601518+00:00",
   "source": "https://stat.ripe.net/data/country-resource-list/data.json",
   "countries": {
     "AD": {
@@ -147,7 +147,7 @@
       "ipv6_prefixes": 27
     },
     "CA": {
-      "ipv4_prefixes": 9298,
+      "ipv4_prefixes": 9299,
       "ipv6_prefixes": 1141
     },
     "CD": {
@@ -399,7 +399,7 @@
       "ipv6_prefixes": 17
     },
     "IN": {
-      "ipv4_prefixes": 9286,
+      "ipv4_prefixes": 9287,
       "ipv6_prefixes": 2890
     },
     "IO": {
@@ -688,7 +688,7 @@
     },
     "PH": {
       "ipv4_prefixes": 910,
-      "ipv6_prefixes": 386
+      "ipv6_prefixes": 387
     },
     "PK": {
       "ipv4_prefixes": 798,
@@ -891,8 +891,8 @@
       "ipv6_prefixes": 39
     },
     "US": {
-      "ipv4_prefixes": 70118,
-      "ipv6_prefixes": 10785
+      "ipv4_prefixes": 70120,
+      "ipv6_prefixes": 10786
     },
     "UY": {
       "ipv4_prefixes": 92,
