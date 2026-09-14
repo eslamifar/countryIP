@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T04:51:08.830341+00:00",
+  "generated_at": "2026-09-14T12:40:45.114547+00:00",
   "source": "https://stat.ripe.net/data/country-resource-list/data.json",
   "countries": {
     "AD": {
@@ -76,7 +76,7 @@
     },
     "BD": {
       "ipv4_prefixes": 2334,
-      "ipv6_prefixes": 1683
+      "ipv6_prefixes": 1684
     },
     "BE": {
       "ipv4_prefixes": 985,
@@ -400,7 +400,7 @@
     },
     "IN": {
       "ipv4_prefixes": 9290,
-      "ipv6_prefixes": 2897
+      "ipv6_prefixes": 2898
     },
     "IO": {
       "ipv4_prefixes": 2,
