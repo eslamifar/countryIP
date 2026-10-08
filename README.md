@@ -1,6 +1,6 @@
 # Country IP Lists
 
-IPv4 and IPv6 CIDR lists for every country, refreshed every six hours from RIPEstat's `country-resource-list` API.
+IPv4 and IPv6 CIDR lists for every country, refreshed every 12 hours from RIPEstat's `country-resource-list` API.
 
 ## Usage
 
@@ -40,7 +40,7 @@ python -m unittest discover -v
 python scripts/generate.py
 ```
 
-The GitHub Actions workflow regenerates and commits the lists every six hours. Data reflects registered country resources and is not geolocation; actual routing or user location may differ.
+The GitHub Actions workflow regenerates and commits the lists every 12 hours. Transient API and network errors are retried five times with exponential backoff and jitter. Data reflects registered country resources and is not geolocation; actual routing or user location may differ.
 
 ## License
 

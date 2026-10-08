@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from urllib.error import URLError
 from pathlib import Path
 from unittest.mock import patch
 from scripts.generate import country_codes, fetch_country
@@ -17,6 +18,18 @@ class GeneratorTest(unittest.TestCase):
         payload = {"status": "ok", "data": {"resources": {"ipv4": ["5.22.0.0/17"], "ipv6": ["2001:db8::/32"]}}}
         with patch("scripts.generate.json.load", return_value=payload):
             self.assertEqual(fetch_country("IR"), ("IR", ["5.22.0.0/17"], ["2001:db8::/32"]))
+
+    @patch("scripts.generate.time.sleep")
+    @patch("scripts.generate.random.uniform", return_value=0.25)
+    @patch("scripts.generate.urllib.request.urlopen")
+    def test_fetch_country_retries_transient_errors(self, urlopen, uniform, sleep):
+        payload = {"status": "ok", "data": {"resources": {"ipv4": ["5.22.0.0/17"], "ipv6": []}}}
+        response = urlopen.return_value
+        urlopen.side_effect = [URLError("temporary failure"), response]
+        with patch("scripts.generate.json.load", return_value=payload):
+            result = fetch_country("IR", attempts=3, base_delay=0.5)
+        self.assertEqual(result[1], ["5.22.0.0/17"])
+        sleep.assert_called_once_with(0.75)
 
 if __name__ == "__main__":
     unittest.main()

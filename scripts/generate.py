@@ -3,7 +3,10 @@
 from __future__ import annotations
 import argparse
 import json
+import random
 import shutil
+import sys
+import time
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -17,15 +20,31 @@ def country_codes(manifest_path: Path) -> list[str]:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     return sorted(manifest["countries"])
 
-def fetch_country(country: str) -> tuple[str, list[str], list[str]]:
+def fetch_country(
+    country: str, attempts: int = 5, base_delay: float = 1.0
+) -> tuple[str, list[str], list[str]]:
     query = urllib.parse.urlencode({"resource": country, "v4_format": "prefix"})
     request = urllib.request.Request(f"{API}?{query}", headers={"User-Agent": "countryIP/2.0"})
-    with urllib.request.urlopen(request, timeout=90) as response:
-        payload = json.load(response)
-    if payload.get("status") != "ok":
-        raise RuntimeError(f"RIPEstat returned {payload.get('status')} for {country}")
-    resources = payload["data"]["resources"]
-    return country, sorted(set(resources.get("ipv4", []))), sorted(set(resources.get("ipv6", [])))
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(request, timeout=90) as response:
+                payload = json.load(response)
+            if payload.get("status") != "ok":
+                raise ValueError(f"RIPEstat returned {payload.get('status')}")
+            resources = payload["data"]["resources"]
+            return country, sorted(set(resources.get("ipv4", []))), sorted(set(resources.get("ipv6", [])))
+        except (OSError, TimeoutError, ValueError, KeyError) as error:
+            if attempt == attempts - 1:
+                raise RuntimeError(
+                    f"Could not fetch {country} after {attempts} attempts"
+                ) from error
+            delay = base_delay * (2**attempt) + random.uniform(0, base_delay)
+            print(
+                f"Retrying {country} in {delay:.1f}s after: {error}",
+                file=sys.stderr,
+                flush=True,
+            )
+            time.sleep(delay)
 
 def write_list(path: Path, prefixes: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
