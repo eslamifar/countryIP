@@ -14,7 +14,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 API = "https://stat.ripe.net/data/country-resource-list/data.json"
-ALIASES = {"IR": "iran"}
 
 def country_codes(manifest_path: Path) -> list[str]:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -70,9 +69,6 @@ def build(output: Path, workers: int = 6) -> None:
         write_list(Path(f"{lower}_ipv4.txt"), ipv4)
         write_list(Path(f"{lower}_ipv6.txt"), ipv6)
         manifest["countries"][country] = {"ipv4_prefixes": len(ipv4), "ipv6_prefixes": len(ipv6)}
-    for code, name in ALIASES.items():
-        shutil.copyfile(Path(f"{code.lower()}_ipv4.txt"), Path(f"{name}_ipv4.txt"))
-        shutil.copyfile(Path(f"{code.lower()}_ipv6.txt"), Path(f"{name}_ipv6.txt"))
     (data_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 
 if __name__ == "__main__":
@@ -81,4 +77,3 @@ if __name__ == "__main__":
     parser.add_argument("--workers", type=int, default=6)
     args = parser.parse_args()
     build(args.output, args.workers)
-

@@ -4,13 +4,7 @@ IPv4 and IPv6 CIDR lists for every country, refreshed every 12 hours from RIPEst
 
 ## Usage
 
-The Iran compatibility file remains available at:
-
-```text
-iran_ipv4.txt
-```
-
-Every country also has raw files in the repository root, using its lowercase two-letter ISO code:
+Every country has raw files in the repository root, using its lowercase two-letter ISO code:
 
 ```text
 ir_ipv4.txt
