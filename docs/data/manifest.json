@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T05:44:42.261770+00:00",
+  "generated_at": "2026-10-31T17:16:27.133890+00:00",
   "source": "https://stat.ripe.net/data/country-resource-list/data.json",
   "countries": {
     "AD": {
@@ -52,7 +52,7 @@
     },
     "AU": {
       "ipv4_prefixes": 9965,
-      "ipv6_prefixes": 1741
+      "ipv6_prefixes": 1740
     },
     "AW": {
       "ipv4_prefixes": 13,
@@ -76,7 +76,7 @@
     },
     "BD": {
       "ipv4_prefixes": 2353,
-      "ipv6_prefixes": 1694
+      "ipv6_prefixes": 1695
     },
     "BE": {
       "ipv4_prefixes": 989,
@@ -147,11 +147,11 @@
       "ipv6_prefixes": 27
     },
     "CA": {
-      "ipv4_prefixes": 9389,
+      "ipv4_prefixes": 9390,
       "ipv6_prefixes": 1147
     },
     "CD": {
-      "ipv4_prefixes": 86,
+      "ipv4_prefixes": 84,
       "ipv6_prefixes": 24
     },
     "CF": {
@@ -212,11 +212,11 @@
     },
     "CZ": {
       "ipv4_prefixes": 1798,
-      "ipv6_prefixes": 677
+      "ipv6_prefixes": 678
     },
     "DE": {
       "ipv4_prefixes": 11068,
-      "ipv6_prefixes": 3117
+      "ipv6_prefixes": 3118
     },
     "DJ": {
       "ipv4_prefixes": 8,
@@ -247,7 +247,7 @@
       "ipv6_prefixes": 165
     },
     "EG": {
-      "ipv4_prefixes": 188,
+      "ipv4_prefixes": 187,
       "ipv6_prefixes": 21
     },
     "ER": {
@@ -255,7 +255,7 @@
       "ipv6_prefixes": 0
     },
     "ES": {
-      "ipv4_prefixes": 3797,
+      "ipv4_prefixes": 3802,
       "ipv6_prefixes": 889
     },
     "ET": {
@@ -288,7 +288,7 @@
     },
     "FR": {
       "ipv4_prefixes": 4760,
-      "ipv6_prefixes": 1413
+      "ipv6_prefixes": 1414
     },
     "GA": {
       "ipv4_prefixes": 25,
@@ -319,7 +319,7 @@
       "ipv6_prefixes": 59
     },
     "GI": {
-      "ipv4_prefixes": 74,
+      "ipv4_prefixes": 75,
       "ipv6_prefixes": 13
     },
     "GL": {
@@ -383,8 +383,8 @@
       "ipv6_prefixes": 172
     },
     "ID": {
-      "ipv4_prefixes": 6305,
-      "ipv6_prefixes": 2826
+      "ipv4_prefixes": 6309,
+      "ipv6_prefixes": 2830
     },
     "IE": {
       "ipv4_prefixes": 760,
@@ -399,8 +399,8 @@
       "ipv6_prefixes": 17
     },
     "IN": {
-      "ipv4_prefixes": 9334,
-      "ipv6_prefixes": 2942
+      "ipv4_prefixes": 9336,
+      "ipv6_prefixes": 2943
     },
     "IO": {
       "ipv4_prefixes": 2,
@@ -419,7 +419,7 @@
       "ipv6_prefixes": 72
     },
     "IT": {
-      "ipv4_prefixes": 3772,
+      "ipv4_prefixes": 3773,
       "ipv6_prefixes": 1072
     },
     "JE": {
@@ -608,7 +608,7 @@
     },
     "MX": {
       "ipv4_prefixes": 1399,
-      "ipv6_prefixes": 620
+      "ipv6_prefixes": 619
     },
     "MY": {
       "ipv4_prefixes": 914,
@@ -635,7 +635,7 @@
       "ipv6_prefixes": 1
     },
     "NG": {
-      "ipv4_prefixes": 422,
+      "ipv4_prefixes": 421,
       "ipv6_prefixes": 138
     },
     "NI": {
@@ -643,7 +643,7 @@
       "ipv6_prefixes": 24
     },
     "NL": {
-      "ipv4_prefixes": 6389,
+      "ipv4_prefixes": 6388,
       "ipv6_prefixes": 1939
     },
     "NO": {
@@ -671,8 +671,8 @@
       "ipv6_prefixes": 25
     },
     "PA": {
-      "ipv4_prefixes": 185,
-      "ipv6_prefixes": 85
+      "ipv4_prefixes": 186,
+      "ipv6_prefixes": 86
     },
     "PE": {
       "ipv4_prefixes": 270,
@@ -835,8 +835,8 @@
       "ipv6_prefixes": 9
     },
     "TH": {
-      "ipv4_prefixes": 1197,
-      "ipv6_prefixes": 239
+      "ipv4_prefixes": 1199,
+      "ipv6_prefixes": 241
     },
     "TJ": {
       "ipv4_prefixes": 70,
@@ -864,7 +864,7 @@
     },
     "TR": {
       "ipv4_prefixes": 2046,
-      "ipv6_prefixes": 671
+      "ipv6_prefixes": 672
     },
     "TT": {
       "ipv4_prefixes": 62,
@@ -879,20 +879,20 @@
       "ipv6_prefixes": 325
     },
     "TZ": {
-      "ipv4_prefixes": 205,
-      "ipv6_prefixes": 86
+      "ipv4_prefixes": 203,
+      "ipv6_prefixes": 85
     },
     "UA": {
-      "ipv4_prefixes": 2917,
-      "ipv6_prefixes": 624
+      "ipv4_prefixes": 2918,
+      "ipv6_prefixes": 625
     },
     "UG": {
-      "ipv4_prefixes": 113,
-      "ipv6_prefixes": 40
+      "ipv4_prefixes": 112,
+      "ipv6_prefixes": 39
     },
     "US": {
-      "ipv4_prefixes": 70516,
-      "ipv6_prefixes": 10884
+      "ipv4_prefixes": 70524,
+      "ipv6_prefixes": 10883
     },
     "UY": {
       "ipv4_prefixes": 92,
